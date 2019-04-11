@@ -12,10 +12,11 @@ before_install:
 
 script:
   - bash test.sh
-  - bash ./exp04/bash/second.sh
+  - bash exp04/bash/second.sh
 
 after_script:
   - /usr/bin/shellcheck test.sh
+  - shellcheck exp04/bash/*.sh
 
 after_failure:
   - id
