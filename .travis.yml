@@ -16,7 +16,7 @@ script:
 
 after_script:
   - /usr/bin/shellcheck test.sh
-  - shellcheck exp04/bash/*.sh
+  - /usr/bin/shellcheck exp04/bash/*.sh
 
 after_failure:
   - id
