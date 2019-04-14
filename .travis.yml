@@ -21,6 +21,8 @@ script:
   - bash exp04/bash/image.sh -i input -o output -p PRE
   - bash exp04/bash/image.sh -i input -o output -s POST
 
+  - bash exp04/bash/web_log.sh
+
 after_script:
   - /usr/bin/shellcheck test.sh
   - /usr/bin/shellcheck exp04/bash/*.sh
