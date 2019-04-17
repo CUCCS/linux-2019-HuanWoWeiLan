@@ -2,7 +2,7 @@
 
 function age_statistics()
 {
-	age=$(awk -F '\t' '{print $6}' exp04/bash/worldcupplayerinfo.tsv)
+	age=$(awk -F '\t' '{print $6}' exp04/worldcupplayerinfo.tsv)
 	sum=0 
 	p1=0 #小于20
 	p2=0 #20~30
@@ -42,7 +42,7 @@ function age_statistics()
 function position_statistics()
 {
    sum=0
-   position=$(awk -F '\t' '{print $5}' exp04/bash/worldcupplayerinfo.tsv)
+   position=$(awk -F '\t' '{print $5}' exp04/worldcupplayerinfo.tsv)
    #position是第五行参数
 	
    flag=0 #用来判断键是否已经存在于pos数组中
@@ -90,7 +90,7 @@ echo ""----------- # 位置球员统计 # -----------""
 function find_name()
 {
   #利用awk的length函数可直接获得字符串长度
-  player=$(awk -F '\t' '{print length($9)}' exp04/bash/worldcupplayerinfo.tsv)
+  player=$(awk -F '\t' '{print length($9)}' exp04/worldcupplayerinfo.tsv)
   max=0
   min=100
   
@@ -105,17 +105,17 @@ function find_name()
      fi
   done
  
-echo "名字最短的球员是： $(awk -F '\t' '{if (length($9)=='$min') {print $9} }' exp04/bash/worldcupplayerinfo.tsv
+echo "名字最短的球员是： $(awk -F '\t' '{if (length($9)=='$min') {print $9} }' exp04/worldcupplayerinfo.tsv
 ) 名字长度为： $min"
-echo "名字最长的球员是 $(awk -F '\t' '{if (length($9)=='$max') {print $9} }' exp04/bash/worldcupplayerinfo.tsv
+echo "名字最长的球员是 $(awk -F '\t' '{if (length($9)=='$max') {print $9} }' exp04/worldcupplayerinfo.tsv
 ) 名字长度为： $max" 
 }
 
 
 function find_age()
 {
-age=$(awk -F '\t' '{print $6}' exp04/bash/worldcupplayerinfo.tsv)
-name=$(awk -F '\t' '{print $9}' exp04/bash/worldcupplayerinfo.tsv)
+age=$(awk -F '\t' '{print $6}' exp04/worldcupplayerinfo.tsv)
+name=$(awk -F '\t' '{print $9}' exp04/worldcupplayerinfo.tsv)
 
 max=0
 min=100
@@ -136,8 +136,8 @@ do
 
 done
 
-echo "年龄最大的球员是 "$(awk -F '\t' '{if ($6~/'$max'/) {print $9} }' exp04/bash/worldcupplayerinfo.tsv) "他的年龄是："$min "岁"
-echo "年龄最小的球员是 "$(awk -F '\t' '{if ($6~/'$min'/) {print $9} }' exp04/bash/worldcupplayerinfo.tsv) "他的年龄是： "$max "岁"
+echo "年龄最大的球员是 "$(awk -F '\t' '{if ($6~/'$max'/) {print $9} }' exp04/worldcupplayerinfo.tsv) "他的年龄是："$min "岁"
+echo "年龄最小的球员是 "$(awk -F '\t' '{if ($6~/'$min'/) {print $9} }' exp04/worldcupplayerinfo.tsv) "他的年龄是： "$max "岁"
 
 }
 age_statistics
