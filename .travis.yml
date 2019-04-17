@@ -16,6 +16,9 @@ before_install:
 script:
   - bash test.sh
 
+  - bash exp04/web_log.sh  
+  
+  - bash exp04/world_cup.sh
   
   
   - bash exp04/image_process/image.sh -i exp04/image_process/test1.jpg -o result1.jpg -q 60 
@@ -26,9 +29,6 @@ script:
   - bash exp04/image_process/image.sh -i input -o output -s POSTFIX
   
   
-  - bash exp04/world_cup.sh
-  
-  - bash exp04/web_log.sh
 
 after_script:
   - /usr/bin/shellcheck test.sh
