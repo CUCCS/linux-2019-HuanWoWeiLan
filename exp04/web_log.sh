@@ -3,25 +3,25 @@
 
 echo -e"\n统计访问来源主机TOP 100和分别对应出现的总次数"
 echo -e
-top100Host=$(more web_log.tsv | awk -F '\t' '{print $1}'| sort | uniq -c | sort -k1 -nr | head -n 100)
+top100Host=$(more exp04/web_log.tsv | awk -F '\t' '{print $1}'| sort | uniq -c | sort -k1 -nr | head -n 100)
 echo "$top100Host"
 
 
 echo -e "\n统计访问来源主机TOP 100 IP和分别对应出现的总次数"
 echo -e
-top100IP=$(more web_log.tsv | awk -F '\t' '{print $1}' | egrep '[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}' | sort | uniq -c | sort -k1 -nr | head -n 100)
+top100IP=$(more exp04/web_log.tsv | awk -F '\t' '{print $1}' | egrep '[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}' | sort | uniq -c | sort -k1 -nr | head -n 100)
 echo "$top100IP"
 
 
 echo -e"\n统计最频繁被访问的URL TOP 100"
 echo -e
-top100URL=$(more web_log.tsv |awk -F '\t' '{print $5}' | sort | uniq -c | sort -k1 -nr | head -n 100)
+top100URL=$(more exp04/web_log.tsv |awk -F '\t' '{print $5}' | sort | uniq -c | sort -k1 -nr | head -n 100)
 echo "$top100URL"
 
 
-	rCode=$(sed -n '2,$ p' web_log.tsv |awk -F'\t' '{print $6}'| sort | uniq -c | sort -nr | head -n 10 | awk '{print $2}')
+	rCode=$(sed -n '2,$ p' exp04/web_log.tsv |awk -F'\t' '{print $6}'| sort | uniq -c | sort -nr | head -n 10 | awk '{print $2}')
 
-	rCount=$(sed -n '2,$ p' web_log.tsv |awk -F'\t' '{print $6}'| sort | uniq -c |sort -nr | head -n 10 | awk '{print $1}')
+	rCount=$(sed -n '2,$ p' exp04/web_log.tsv |awk -F'\t' '{print $6}'| sort | uniq -c |sort -nr | head -n 10 | awk '{print $1}')
 
 	code=($rCode)
 	count=($rCount)
@@ -49,7 +49,7 @@ echo "$top100URL"
 	done
 	echo -e
 
-	temp=$(more web_log.tsv | awk -F'\t' '{if(substr($6,1,1)==4)print $5"\t"$6}' > target2.txt)
+	temp=$(more exp04/web_log.tsv | awk -F'\t' '{if(substr($6,1,1)==4)print $5"\t"$6}' > target2.txt)
 	codes_type=$(more target2.txt | awk -F'\t' '{print $2}'| sort | uniq -c | awk '{print $2}')
 	codes_count=$(more target2.txt | awk -F'\t' '{print $2}'| sort | uniq -c | awk '{print $1}')
 
@@ -68,5 +68,5 @@ echo "$top100URL"
 	echo -e
 	echo -e "\n给定URL输出TOP 100访问来源主机"
 	echo -e 
-	hosts=$(more web_log.tsv | awk -F'\t' '{if("'$url'"==$5)print $1}' | sort | uniq -c | sort -k1 -nr |head -n 100)
+	hosts=$(more exp04/web_log.tsv | awk -F'\t' '{if("'$url'"==$5)print $1}' | sort | uniq -c | sort -k1 -nr |head -n 100)
 	echo "$hosts"
