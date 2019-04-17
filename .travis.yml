@@ -12,7 +12,18 @@ before_install:
 
 script:
   - bash test.sh
-  - bash exp04/bash/second.sh
+
+  
+  
+  - bash exp04/image_process/image.sh -i exp04/bash/image_process/test1.jpg -o result1.jpg -q 60 
+  - bash exp04/image_process/image.sh -i exp04/bash/image_process/test2.png -o result2.jpg -r 70  
+  
+  - bash exp04/image_process/image.sh -i exp04/bash/image_process/test1.jpg -o result3.jpg -w LALALALALAL
+  - bash exp04/image_process/image.sh -i input -o output -p PREFIX
+  - bash exp04/image_process/image.sh -i input -o output -s POSTFIX
+  
+  
+  - bash exp04/world_cup.sh
 
 after_script:
   - /usr/bin/shellcheck test.sh

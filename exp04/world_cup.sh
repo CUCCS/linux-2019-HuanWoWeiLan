@@ -105,9 +105,9 @@ function find_name()
      fi
   done
  
-echo "名字最短的球员是： $(awk -F '\t' '{if (length($9)=='$min') {print $9} }' worldcupplayerinfo.tsv
+echo "名字最短的球员是： $(awk -F '\t' '{if (length($9)=='$min') {print $9} }' exp04/bash/worldcupplayerinfo.tsv
 ) 名字长度为： $min"
-echo "名字最长的球员是 $(awk -F '\t' '{if (length($9)=='$max') {print $9} }' worldcupplayerinfo.tsv
+echo "名字最长的球员是 $(awk -F '\t' '{if (length($9)=='$max') {print $9} }' exp04/bash/worldcupplayerinfo.tsv
 ) 名字长度为： $max" 
 }
 
